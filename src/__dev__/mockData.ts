@@ -1,0 +1,158 @@
+// ─────────────────────────────────────────────────────────────
+// MOCK DATA — frontend-only development fixtures
+// Replace with real API calls when backend is ready.
+// ─────────────────────────────────────────────────────────────
+
+import type { User, Item, Claim, KeyRecord } from '@/types'
+
+export const MOCK_USER: User = {
+  id: 'u1',
+  name: 'Nida Fatima',
+  email: 'nida.fatima@hkbk.edu.in',
+  usn: 'HKBK-CSE-24018',
+  role: 'student',
+  department: 'Computer Science',
+  yearGroup: '3rd Year',
+  phone: '9876543210',
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+}
+
+export const MOCK_ADMIN: User = {
+  id: 'a1',
+  name: 'Dr. Anitha K',
+  email: 'anitha@hkbk.edu.in',
+  usn: 'HOD-CS',
+  role: 'admin',
+  department: 'Computer Science',
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+}
+
+export const MOCK_ITEMS: Item[] = [
+  {
+    id: 'item-1',
+    type: 'lost',
+    title: 'Black Leather Wallet',
+    description: 'Black leather wallet with college ID inside. Lost near the library.',
+    category: 'ID & Documents',
+    status: 'Available',
+    location: 'Library',
+    date: new Date(Date.now() - 86400000).toISOString(),
+    images: [],
+    reportedBy: { id: 'u1', name: 'Nida Fatima', usn: 'HKBK-CSE-24018', yearGroup: '3rd Year', department: 'Computer Science' },
+    createdAt: new Date(Date.now() - 86400000).toISOString(),
+    updatedAt: new Date(Date.now() - 86400000).toISOString(),
+  },
+  {
+    id: 'item-2',
+    type: 'found',
+    title: 'Student ID Card',
+    description: 'Found near the canteen entrance. USN partially visible.',
+    category: 'ID & Documents',
+    status: 'Available',
+    location: 'Canteen',
+    date: new Date(Date.now() - 172800000).toISOString(),
+    images: [],
+    reportedBy: { id: 'u2', name: 'Arjun Sharma', usn: 'HKBK-ME-24032', yearGroup: '2nd Year', department: 'Mechanical' },
+    createdAt: new Date(Date.now() - 172800000).toISOString(),
+    updatedAt: new Date(Date.now() - 172800000).toISOString(),
+  },
+  {
+    id: 'item-3',
+    type: 'lost',
+    title: 'Blue Water Bottle',
+    description: 'Blue stainless steel bottle with HKBK sticker.',
+    category: 'Other',
+    status: 'Claim Requested',
+    location: 'Main Block',
+    date: new Date(Date.now() - 259200000).toISOString(),
+    images: [],
+    reportedBy: { id: 'u3', name: 'Priya R', usn: 'HKBK-EC-24011', yearGroup: '1st Year', department: 'Electronics & Communication' },
+    createdAt: new Date(Date.now() - 259200000).toISOString(),
+    updatedAt: new Date(Date.now() - 259200000).toISOString(),
+  },
+  {
+    id: 'item-4',
+    type: 'found',
+    title: 'Wireless Earbuds',
+    description: 'White wireless earbuds in black case found in lab block.',
+    category: 'Electronics',
+    status: 'Under Verification',
+    location: 'Lab Block',
+    date: new Date(Date.now() - 345600000).toISOString(),
+    images: [],
+    reportedBy: { id: 'u4', name: 'Mohammed Ali', usn: 'HKBK-CS-24055', yearGroup: '4th Year', department: 'Computer Science' },
+    createdAt: new Date(Date.now() - 345600000).toISOString(),
+    updatedAt: new Date(Date.now() - 345600000).toISOString(),
+  },
+  {
+    id: 'item-5',
+    type: 'lost',
+    title: 'Engineering Notebook',
+    description: 'Green spiral notebook with "Data Structures" written on cover.',
+    category: 'Books & Stationery',
+    status: 'Available',
+    location: 'Library',
+    date: new Date(Date.now() - 432000000).toISOString(),
+    images: [],
+    reportedBy: { id: 'u5', name: 'Sneha M', usn: 'HKBK-CS-24070', yearGroup: '2nd Year', department: 'Computer Science' },
+    createdAt: new Date(Date.now() - 432000000).toISOString(),
+    updatedAt: new Date(Date.now() - 432000000).toISOString(),
+  },
+  {
+    id: 'item-6',
+    type: 'found',
+    title: 'Lab Coat',
+    description: 'White lab coat size M found in chemistry lab.',
+    category: 'Clothing & Accessories',
+    status: 'Approved',
+    location: 'Lab Block',
+    date: new Date(Date.now() - 518400000).toISOString(),
+    images: [],
+    reportedBy: { id: 'u6', name: 'Rahul K', usn: 'HKBK-ME-24088', yearGroup: '3rd Year', department: 'Mechanical' },
+    createdAt: new Date(Date.now() - 518400000).toISOString(),
+    updatedAt: new Date(Date.now() - 518400000).toISOString(),
+  },
+]
+
+export const MOCK_CLAIMS: Claim[] = [
+  {
+    id: 'claim-1',
+    itemId: 'item-2',
+    itemTitle: 'Student ID Card',
+    claimantId: 'u1',
+    claimantName: 'Nida Fatima',
+    claimantUsn: 'HKBK-CSE-24018',
+    status: 'Pending',
+    description: 'This is my ID card. It has my photo and USN on it.',
+    submittedAt: new Date(Date.now() - 3600000).toISOString(),
+    updatedAt: new Date(Date.now() - 3600000).toISOString(),
+  },
+]
+
+export const MOCK_KEYS: KeyRecord[] = [
+  {
+    id: 'key-1',
+    keyIdentifier: 'LAB-301-A',
+    label: 'Computer Lab 3rd Floor',
+    category: 'Lab',
+    status: 'Active',
+    issuedTo: { id: 'u1', name: 'Nida Fatima', usn: 'HKBK-CSE-24018', role: 'student' },
+    issuedAt: new Date(Date.now() - 604800000).toISOString(),
+    createdAt: new Date(Date.now() - 604800000).toISOString(),
+    updatedAt: new Date(Date.now() - 604800000).toISOString(),
+  },
+  {
+    id: 'key-2',
+    keyIdentifier: 'SR-101-B',
+    label: 'Staff Room Ground Floor',
+    category: 'Staff Room',
+    status: 'Revoked',
+    issuedTo: { id: 'u1', name: 'Nida Fatima', usn: 'HKBK-CSE-24018', role: 'student' },
+    issuedAt: new Date(Date.now() - 1209600000).toISOString(),
+    revokedAt: new Date(Date.now() - 86400000).toISOString(),
+    createdAt: new Date(Date.now() - 1209600000).toISOString(),
+    updatedAt: new Date(Date.now() - 86400000).toISOString(),
+  },
+]

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-gray-900;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .dark body {
+    @apply bg-navy-950 text-white;
+  }
+}
+
+@layer components {
+
+  /* ── App shell: mobile = full width, desktop = no artificial cap ── */
+  .app-shell {
+    @apply w-full min-h-screen relative;
+  }
+
+  /* ── Page content area: sits to the right of sidebar on desktop ── */
+  .page-content {
+    /* mobile: full width, padded bottom for bottom-nav */
+    @apply w-full min-h-screen flex flex-col pb-20;
+    /* lg+: shift right to clear the 240px sidebar, no bottom padding */
+    @apply lg:pl-60 lg:pb-0;
+  }
+
+  /* ── Inner content max-width container ── */
+  .content-wrap {
+    @apply w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* ── Card base ── */
+  .card {
+    @apply rounded-2xl bg-white shadow-card;
+  }
+
+  .card-dark {
+    @apply rounded-2xl bg-navy-800 shadow-card-dark;
+  }
+
+  /* ── Button variants ── */
+  .btn-primary {
+    @apply w-full py-3.5 lg:py-3 rounded-full bg-navy-900 text-white font-semibold
+           text-sm tracking-wide flex items-center justify-center gap-2
+           hover:bg-navy-800 active:opacity-80 transition-all cursor-pointer;
+  }
+
+  .btn-teal {
+    @apply w-full py-3.5 lg:py-3 rounded-full bg-teal-600 text-white font-semibold
+           text-sm tracking-wide flex items-center justify-center gap-2
+           hover:bg-teal-500 active:opacity-80 transition-all cursor-pointer;
+  }
+
+  .btn-outline {
+    @apply w-full py-3.5 lg:py-3 rounded-full border border-gray-300 text-gray-700
+           font-semibold text-sm tracking-wide flex items-center
+           justify-center gap-2 hover:bg-gray-50 active:opacity-80 transition-all bg-white cursor-pointer;
+  }
+
+  /* ── Form elements ── */
+  .form-input {
+    @apply w-full rounded-xl border border-gray-200 bg-white px-4 py-3
+           text-sm text-gray-900 placeholder-gray-400
+           focus:outline-none focus:ring-2 focus:ring-navy-700 focus:border-transparent
+           transition;
+  }
+
+  .form-textarea {
+    @apply w-full rounded-xl border border-gray-200 bg-white px-4 py-3
+           text-sm text-gray-900 placeholder-gray-400 resize-none
+           focus:outline-none focus:ring-2 focus:ring-navy-700 focus:border-transparent
+           transition;
+  }
+
+  .form-select {
+    @apply w-full rounded-xl border border-gray-200 bg-white px-4 py-3
+           text-sm text-gray-900
+           focus:outline-none focus:ring-2 focus:ring-navy-700 focus:border-transparent
+           transition appearance-none;
+  }
+
+  .form-label {
+    @apply block text-sm font-semibold text-gray-800 mb-1.5;
+  }
+
+  /* ── Status badge ── */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  /* ── Section header (profile page) ── */
+  .section-header {
+    @apply text-xs font-semibold tracking-widest text-gray-400 uppercase px-4 pt-6 pb-2;
+  }
+
+  /* ── List row (profile page) ── */
+  .list-row {
+    @apply flex items-center justify-between px-4 py-4 border-b border-white/10
+           last:border-0 cursor-pointer hover:bg-white/5 active:opacity-70 transition-colors;
+  }
+
+  /* ── Page header band ── */
+  .page-header {
+    @apply bg-navy-900 px-5 pt-5 pb-8 lg:pt-8 lg:pb-10;
+  }
+
+  /* ── Desktop auth card wrapper ── */
+  .auth-card {
+    @apply w-full max-w-md mx-auto;
+  }
+}
+
+/* ── Scrollbar hide utility ── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
